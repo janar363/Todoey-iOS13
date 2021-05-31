@@ -1,12 +1,6 @@
-//
-//  AppDelegate.swift
-//  Destini
-//
-//  Created by Philipp Muellauer on 01/09/2015.
-//  Copyright (c) 2015 London App Brewery. All rights reserved.
-//
 
 import UIKit
+import RealmSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -15,7 +9,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        
+//        print(Realm.Configuration.defaultConfiguration.fileURL)
+        
+        do{
+            _ = try Realm()
+        } catch {
+            print("Cannot initialize realm due to \(error)")
+        }
+        
         return true
     }
 
@@ -25,8 +27,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func applicationDidEnterBackground(_ application: UIApplication) {
-        // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
-        // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+        print("didEnterBackground")
     }
 
     func applicationWillEnterForeground(_ application: UIApplication) {
@@ -38,8 +39,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func applicationWillTerminate(_ application: UIApplication) {
-        // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+        print("willTerminate")
     }
+    
+    
 
 
 }
